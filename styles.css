@@ -1,0 +1,103 @@
+body {
+    font-family: Poppins;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg,  #DDA0DD, #c08fc0, #d486d4, #DDA0DD);
+    background-size: 400% 100%;
+    animation: colorTransition 80s infinite; /* Adjust the duration accordingly */
+}
+
+@keyframes colorTransition {
+    0%, 100% {
+        background-position: 0%;
+    }
+    25% {
+        background-position: 100%;
+    }
+    50% {
+        background-position: 200%;
+    }
+    75% {
+        background-position: 300%;
+    }
+}
+
+
+#map-container,
+#guess-container,
+#score-container {
+    position: relative;
+    z-index: 1; /* Set a positive z-index to place it above the waves */
+}
+
+#map-container {
+    margin-bottom: 20px;
+}
+
+#guess-container {
+    text-align: center;
+}
+
+input {
+    padding: 10px; /* Increased padding for a cleaner look */
+    margin-right: 5px;
+    border: 2px solid #ccc; /* Added a border for better visibility */
+    border-radius: 5px; /* Rounded corners */
+    transition: border 0.5s;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-10px);
+    }
+    40%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+button {
+    padding: 10px 15px; /* Increased padding for a cleaner look */
+    cursor: pointer;
+    background-color: #ba11c0; /* Green color for the button */
+    color: white; /* White text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.prefecture-border {
+    fill: none;
+    stroke: #000; /* Set the border color to black */
+    stroke-width: .3; /* Set the border width */
+}
+
+.fly-in {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.fly-in-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
