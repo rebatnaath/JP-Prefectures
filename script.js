@@ -59,10 +59,10 @@ let score = 0; // Global variable for the score
 // Function to check the user's guess
 function checkGuess() {
     const userInput = document.getElementById("prefectureInput").value;
-    const lowercaseInput = userInput.toLowerCase();
+    const trimmedInput = userInput.trim().toLowerCase(); // Trim leading and trailing whitespaces
 
     // Check if the user's guess is in the array of prefecture titles (case-insensitive)
-    const guessedPrefecture = Object.keys(initialColors).find(title => title.toLowerCase() === lowercaseInput);
+    const guessedPrefecture = Object.keys(initialColors).find(title => title.toLowerCase() === trimmedInput);
 
     if (guessedPrefecture) {
         // Update the color of the guessed prefecture
@@ -94,21 +94,23 @@ document.getElementById("prefectureInput").addEventListener("keyup", function (e
 // Function to handle correct guesses
 function handleCorrectGuess() {
     const scoreElement = document.getElementById("score");
+    const score = parseInt(scoreElement.innerText.split('/')[0]);
     const totalPrefectures = Object.keys(initialColors).length;
 
     // Increment the score
-    score++;
+    const updatedScore = score + 1;
 
     // Check if all prefectures are guessed correctly
-    if (score === totalPrefectures) {
+    if (updatedScore === totalPrefectures) {
         // Display a congratulatory message and trigger visual effects
+        clearInterval(timerInterval); // Stop the timer
         alert("Congratulations! You've guessed all prefectures!");
 
         // You can add additional visual effects or animations here.
     }
 
-    // Update the score
-    scoreElement.innerText = `Score: ${score}/${totalPrefectures}`;
+    // Update the score and reset the timer
+    scoreElement.innerText = `Score: ${updatedScore}/${totalPrefectures}`;
 
     // Clear the input field on correct guess
     document.getElementById("prefectureInput").value = "";
