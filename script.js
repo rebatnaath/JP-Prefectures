@@ -1,4 +1,4 @@
-// Define an object with initial colors for specific regions
+
 const initialColors = {
   "Hokkaido": "lightcoral",
   "Aomori": "khaki",
@@ -61,7 +61,7 @@ function checkGuess() {
     const userInput = document.getElementById("prefectureInput").value;
     const trimmedInput = userInput.trim().toLowerCase(); // Trim leading and trailing whitespaces
 
-    // Check if the user's guess is in the array of prefecture titles (case-insensitive)
+    // Check if the user's guess is in the array of prefecture titles
     const guessedPrefecture = Object.keys(initialColors).find(title => title.toLowerCase() === trimmedInput);
 
     if (guessedPrefecture) {
@@ -97,26 +97,26 @@ function handleCorrectGuess() {
     const score = parseInt(scoreElement.innerText.split('/')[0]);
     const totalPrefectures = Object.keys(initialColors).length;
 
-    // Increment the score
+    
     const updatedScore = score + 1;
 
-    // Check if all prefectures are guessed correctly
+    
     if (updatedScore === totalPrefectures) {
-        // Display a congratulatory message and trigger visual effects
-        clearInterval(timerInterval); // Stop the timer
+      
+        clearInterval(timerInterval);
         alert("Congratulations! You've guessed all prefectures!");
 
-        // You can add additional visual effects or animations here.
+        
     }
 
-    // Update the score and reset the timer
+   
     scoreElement.innerText = `Score: ${updatedScore}/${totalPrefectures}`;
 
-    // Clear the input field on correct guess
+    
     document.getElementById("prefectureInput").value = "";
 }
 
-// Function to start the game
+
 function startGame() {
     // Reset the score
     score = 0;
@@ -134,14 +134,14 @@ function startGame() {
         });
     }
 
-    // Enable the input field
+   
     document.getElementById("prefectureInput").disabled = false;
 
-    // Focus on the input field
+   
     document.getElementById("prefectureInput").focus();
 }
 
-// Initialize the colors of specific regions on page load
+
 document.addEventListener("DOMContentLoaded", () => {
     for (const [prefecture, color] of Object.entries(initialColors)) {
         const svgElements = document.querySelectorAll(`path[title="${prefecture}"]`);
